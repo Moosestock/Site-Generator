@@ -1,3 +1,4 @@
+from enum import Enum
 from htmlnode import HTMLNode
 
 class ParentNode(HTMLNode):
@@ -7,21 +8,15 @@ class ParentNode(HTMLNode):
 
 	def to_html(self):
 		if self.tag is None:
-			raise ValueError("tag undefined")
+			raise ValueError("invalid HTML: no tag")
 		elif self.children is None:
-			raise ValueError("children undefined")
-		props_text = ""
-		if self.props is None:
-			props_text = ""
-		else:
-			for k, v in self.props.items():
-				props_text += f' {k}"{v}"'
+			raise ValueError("invalid HTML: no children")
 		child_text = ""
 		for child in self.children:
 			child_text += child.to_html()
-		return f"<{self.tag}>{props_text}{child_text}</{self.tag}>"
+		return f"<{self.tag}>{self.props_to_html()}{child_text}</{self.tag}>"
 
 	def __repr__(self):
-		return f"{self. tag}, {self.value}, {self.props}" 
+		return f"ParentNode({self. tag}, children: {self.value}, {self.props})"
 
 
