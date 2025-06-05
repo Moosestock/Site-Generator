@@ -13,7 +13,7 @@ class TestTextNode(unittest.TestCase):
 		text_type = TextType.CODE
 		url = "https://suckittrebek.com"
 		node = TextNode(text_in, text_type, url)
-		node2 = f"TextNode({text_in}, {text_type.value}, {url})"
+		node2 = f"TextNode({text_in}, TextType.CODE, {url})"
 		self.assertEqual(repr(node), node2)
 
 	def test_not_eq(self):
