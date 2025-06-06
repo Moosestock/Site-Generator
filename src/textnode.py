@@ -3,9 +3,9 @@ from enum import Enum
 class TextType(Enum):
     TEXT = "text"
     NORMAL = "normal"
-    BOLD = "bold"
-    ITALIC = "italic"
-    CODE = "code"
+    BOLD = "b"
+    ITALIC = "i"
+    CODE = "code" # code needs to be nested inside a "<pre>" tag, e.g. <pre><code>
     LINK = "link"
     IMAGE = "image"
 
